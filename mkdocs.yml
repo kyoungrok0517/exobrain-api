@@ -1,0 +1,12 @@
+site_name: exobrain-api
+site_description: Exobrain API
+repo_url: https://github.com/kyoungrok0517/exobrain-api
+site_dir: site
+copyright: Copyright &copy; 2018, <a href="https://github.com/kyoungrok0517">kyoungrok0517</a>.
+dev_addr: 0.0.0.0:8001
+
+pages:
+  - Home: 'index.md'
+  - API:
+    - Authentication: 'api/authentication.md'
+    - Users: 'api/users.md'
