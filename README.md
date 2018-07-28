@@ -58,7 +58,7 @@ Returns json data about triples that match the given criteria.
   - **Code**: 200 <br>
     **Content**: 주어진 조건에 맞는 triple 이 `rel.confidence`가 높은 순으로 반환됨
     ```json
-    [
+    {
       "page": 1,
       "triples": [{
         "id": "0002717|00|0001|승용차 |AND| 역사",
@@ -94,7 +94,7 @@ Returns json data about triples that match the given criteria.
         },
         "context": "kowiki/현대 쏘나타 /// __TOP_SECTION__"
       }, ...]
-    ]
+    }
     ```
 
 * **Error Response**
