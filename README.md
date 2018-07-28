@@ -41,9 +41,9 @@ Returns json data about triples that match the given criteria.
 
   **Pagination:**
 
-  `page` : 페이지 번호 (1, 2, ...). 기본값 1.
+  `page` : 페이지 번호. 기본값 1.
 
-  `limit` : 페이지 당 triple 최대 개수 (e.g. 20). 기본값 20.
+  `limit` : 페이지 당 triple 최대 개수. 기본값 10.
 
   - `page=[int]`
 
@@ -60,6 +60,7 @@ Returns json data about triples that match the given criteria.
     ```json
     {
       "page": 1,
+      "count": 7,
       "triples": [{
         "id": "0002717|00|0001|승용차 |AND| 역사",
         "sbj": {
