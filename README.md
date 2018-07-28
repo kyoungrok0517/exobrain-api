@@ -47,21 +47,54 @@ Returns json data about triples that match the given criteria.
 
   - **Code**: 200 <br>
     **Content**:
-    ```
-    {}
+    ```json
+    {
+      "id": "0002717|00|0001|승용차 |AND| 역사",
+      "sbj": {
+        "id": "Q001144312",
+        "link": "kowiki/승용차",
+        "name": "승용차",
+        "type": ["AF_TRANSPORT"],
+        "mention": "승용차",
+        "attribute": ""
+      },
+      "rel": {
+        "id": "P279",
+        "name": "subclass of",
+        "confidence": 0.012006174
+      },
+      "obj": {
+        "id": "Q000000309",
+        "link": "kowiki/역사",
+        "name": "역사",
+        "type": ["FD_ART", "CV_POSITION"],
+        "mention": "역사",
+        "attribute": ""
+      },
+      "source": {
+        "sent": "현재 현대자동차의 승용차 중에서 가장 긴 역사를 가지고 있다.",
+        "sect": "__TOP_SECTION__",
+        "doc": {
+          "id": "Q000482458",
+          "link": "kowiki/현대 쏘나타",
+          "name": "현대 쏘나타"
+        }
+      },
+      "context": "kowiki/현대 쏘나타 /// __TOP_SECTION__"
+    }
     ```
 
 * **Error Response**
 
   - **Code**: 404 NOT FOUND <br>
     **Content**:
-    ```
-    {error : "Triple doesn't exist"}
+    ```json
+    { "error": "Triple doesn't exist" }
     ```
 
 * **Sample Call**
-  ```
-  {}
+  ```sh
+  curl ...
   ```
 
 # Prerequisites
