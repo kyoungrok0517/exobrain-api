@@ -1,16 +1,21 @@
-from django.http import HttpResponse, JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
+from rest_framework import viewsets
 from kcg.models import Triple
 from kcg.serializers import TripleSerializer
 
-@csrf_exempt
-def triple_list(request):
+class KcgViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    List all KCG triples.
+    List all KCG triples. 
+    Provides `list` and `detail` actions.
     """
-    if request.method == 'GET':
-        triples = Triple.objects.all()
-        serializer = TripleSerializer(triples, many=True)
-        return JsonResponse(serializer.data, safe=False)
+    queryset = Triple.objects.all()
+    serializer_class = TripleSerializer
+
+# @csrf_exempt
+# def triple_list(request):
+#     """
+#     List all KCG triples.
+#     """
+#     if request.method == 'GET':
+#         triples = Triple.objects.all()
+#         serializer = TripleSerializer(triples, many=True)
+#         return JsonResponse(serializer.data, safe=False)
