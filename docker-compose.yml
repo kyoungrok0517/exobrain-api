@@ -6,7 +6,7 @@ services:
     ports:
       - "5432:5432"
   web:
-    restart: always
+    # restart: always
     environment:
       - DJANGO_SECRET_KEY=local
     image: web
@@ -14,6 +14,7 @@ services:
     command: >
       bash -c "python wait_for_postgres.py &&
                chmod +x ./manage.py &&
+               ./manage.py makemigrations &&
                ./manage.py migrate &&
                ./manage.py runserver 0.0.0.0:8000"
     volumes:

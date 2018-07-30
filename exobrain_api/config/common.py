@@ -23,7 +23,7 @@ class Common(Configuration):
         'django_filters',            # for filtering rest endpoints
 
         # Your apps
-        'exobrain-api.users',
+        'exobrain_api.users',
         'kcg'
 
     )
@@ -40,9 +40,9 @@ class Common(Configuration):
     )
 
     ALLOWED_HOSTS = ["*"]
-    ROOT_URLCONF = 'exobrain-api.urls'
+    ROOT_URLCONF = 'exobrain_api.urls'
     SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
-    WSGI_APPLICATION = 'exobrain-api.wsgi.application'
+    WSGI_APPLICATION = 'exobrain_api.wsgi.application'
 
     # Email
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -55,18 +55,18 @@ class Common(Configuration):
     DATABASES = {
         # 'default': 'django.db.backends.dummy',
         'default': dj_database_url.config(
-            default='postgres://postgres:onlyjesus@postgres:5432/postgres',
+            default='postgres://postgres:onlyjesus@localhost:5432/postgres',
             conn_max_age=int(os.getenv('POSTGRES_CONN_MAX_AGE', 600))
         )
     }
 
     # General
     APPEND_SLASH = False
-    TIME_ZONE = 'UTC'
-    LANGUAGE_CODE = 'en-us'
+    TIME_ZONE = 'Asia/Seoul'
+    LANGUAGE_CODE = 'ko-kr'
     # If you set this to False, Django will make some optimizations so as not
     # to load the internationalization machinery.
-    USE_I18N = False
+    USE_I18N = True
     USE_L10N = True
     USE_TZ = True
     LOGIN_REDIRECT_URL = '/'

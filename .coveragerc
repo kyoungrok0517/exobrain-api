@@ -5,6 +5,6 @@ omit = *migrations*,
        *test*,
        *admin*,
        ./manage.py,
-       ./exobrain-api/config/*,
-       ./exobrain-api/wsgi.py,
+       ./exobrain_api/config/*,
+       ./exobrain_api/wsgi.py,
        *__init__*

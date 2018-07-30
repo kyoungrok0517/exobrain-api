@@ -15,4 +15,4 @@ EXPOSE 8000
 CMD chmod +x ./manage.py && \
     ./manage.py migrate && \
     ./manage.py collectstatic --noinput && \
-    newrelic-admin run-program gunicorn --bind 0.0.0.0:$PORT --access-logfile - exobrain-api.wsgi:application
+    newrelic-admin run-program gunicorn --bind 0.0.0.0:$PORT --access-logfile - exobrain_api.wsgi:application

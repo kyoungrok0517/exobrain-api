@@ -14,13 +14,13 @@ script:
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login --username=_ --password="$HEROKU_AUTH_TOKEN" registry.heroku.com;
-    docker tag web registry.heroku.com/exobrain-api-prod/web;
-    docker push registry.heroku.com/exobrain-api-prod/web;
+    docker tag web registry.heroku.com/exobrain_api-prod/web;
+    docker push registry.heroku.com/exobrain_api-prod/web;
     fi
   - if [ "$TRAVIS_BRANCH" == "qa" ]; then
     docker login --username=_ --password="$HEROKU_AUTH_TOKEN" registry.heroku.com;
-    docker tag web registry.heroku.com/exobrain-api-qa/web;
-    docker push registry.heroku.com/exobrain-api-qa/web;
+    docker tag web registry.heroku.com/exobrain_api-qa/web;
+    docker push registry.heroku.com/exobrain_api-qa/web;
     fi
 
 notifications:

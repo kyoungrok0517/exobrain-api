@@ -16,7 +16,7 @@ class Local(Common):
         '--nologcapture',
         '--with-coverage',
         '--with-progressive',
-        '--cover-package=exobrain-api'
+        '--cover-package=exobrain_api'
     ]
 
     # Mail

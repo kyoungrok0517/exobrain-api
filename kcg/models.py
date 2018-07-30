@@ -4,7 +4,7 @@ from django.contrib.postgres.fields import JSONField
 # Create your models here.
 class Triple(models.Model):
     uid = models.CharField(max_length=200)
-    sub = JSONField()
+    sbj = JSONField()
     rel = JSONField()
     obj = JSONField()
     source = JSONField()
