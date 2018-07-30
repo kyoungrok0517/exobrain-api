@@ -2,7 +2,9 @@ version: '2'
 
 services:
   postgres:
-    image: postgres:9.6
+    image: postgres:10.4
+    ports:
+      - "5432:5432"
   web:
     restart: always
     environment:
