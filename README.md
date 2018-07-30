@@ -114,6 +114,7 @@ Returns json data about triples that match the given criteria.
 # Prerequisites
 
 - [Docker](https://docs.docker.com/docker-for-mac/install/)
+- [Docker Compose](https://docs.docker.com/compose/)
 - [Travis CLI](http://blog.travis-ci.com/2013-01-14-new-client/)
 
 # Local Development
