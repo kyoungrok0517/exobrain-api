@@ -14,7 +14,6 @@ services:
     command: >
       bash -c "python wait_for_postgres.py &&
                chmod +x ./manage.py &&
-               ./manage.py makemigrations &&
                ./manage.py migrate &&
                ./manage.py runserver 0.0.0.0:8000"
     volumes:

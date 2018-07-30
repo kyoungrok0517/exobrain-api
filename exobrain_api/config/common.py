@@ -24,7 +24,7 @@ class Common(Configuration):
 
         # Your apps
         'exobrain_api.users',
-        'kcg'
+        'kcg.apps.KcgConfig'
 
     )
 
@@ -55,7 +55,7 @@ class Common(Configuration):
     DATABASES = {
         # 'default': 'django.db.backends.dummy',
         'default': dj_database_url.config(
-            default='postgres://postgres:onlyjesus@localhost:5432/postgres',
+            default='postgres://postgres:onlyjesus@postgres:5432/postgres',
             conn_max_age=int(os.getenv('POSTGRES_CONN_MAX_AGE', 600))
         )
     }
