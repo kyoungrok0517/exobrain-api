@@ -19,7 +19,7 @@ Returns json data about triples that match the given criteria.
 
 - **URL**
 
-  `/triples`
+  `/kcg/api/v1`
 
 * **Method**
 
@@ -98,7 +98,7 @@ Returns json data about triples that match the given criteria.
 
 * **Sample Call**
   ```sh
-  curl ...
+  curl 'http://localhost:8100/api/v1/kcg' 
   ```
 
 # Prerequisites
