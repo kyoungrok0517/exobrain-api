@@ -5,6 +5,12 @@
 
 Exobrain API. Check out the project's [documentation](http://kyoungrok0517.github.io/exobrain-api/).
 
+# How to Run
+```bash
+cd exobrain-api
+docker-compose up
+```
+
 # API
 
 ## Show Triple
@@ -99,7 +105,6 @@ Returns json data about triples that match the given criteria.
 
 - [Docker](https://docs.docker.com/docker-for-mac/install/)
 - [Docker Compose](https://docs.docker.com/compose/)
-- [Travis CLI](http://blog.travis-ci.com/2013-01-14-new-client/)
 
 # Local Development
 
