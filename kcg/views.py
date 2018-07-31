@@ -1,49 +1,43 @@
 from rest_framework import viewsets
 from kcg.models import Triple
 from kcg.serializers import TripleSerializer
-from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse, JsonResponse
-from django.core.paginator import Paginator
-import ujson as json
+from rest_framework.pagination import PageNumberPagination
 
-@csrf_exempt
-def triple_list(request):
+
+class KcgViewSetPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+
+
+class KcgViewSet(viewsets.ModelViewSet):
     """
     List all KCG triples.
+    Provides `list` and `detail` actions.
     """
-    def get_triples_with_criteria(request, criteria):
-        _filter = {}
+    # queryset = Triple.objects.all()
+    serializer_class = TripleSerializer
+    pagination_class = KcgViewSetPagination
+    queryset = Triple.objects.all()
+
+    def get_queryset_with_query_params(self, queryset, request):
+        criteria = {}
+        params = request.GET
         for field in ['sbj', 'rel', 'obj']:
-            if field in criteria:
-                _filter[f'{field}__name__iexact'] = criteria[field]
+            if field in params:
+                criteria[f'{field}__name__iexact'] = params[field]
         for field in ['sbj_id', 'rel_id', 'obj_id']:
-            if field in criteria:
-                _filter[f'{field}__id__iexact'] = criteria[field]
-
+            if field in params:
+                criteria[f'{field}__id__iexact'] = params[field]
         # filter
-        triples = None
-        if _filter:
-            triples = Triple.objects.filter(**_filter)
+        if criteria:
+            queryset = queryset.filter(**criteria)
         else:
-            triples = Triple.objects.all()
+            queryset = queryset.all()
+        # order by relation confidence score
+        queryset = queryset.order_by('-confidence')
 
-        return triples
+        return queryset
 
-    if request.method == 'GET':
-        triples = get_triples_with_criteria(request, request.GET)
-        # paginate
-        page = request.GET.get('page', 1)
-        limit = request.GET.get('limit', 10)
-        paginated = Paginator(triples, limit).get_page(page)
-        serializer = TripleSerializer(paginated, many=True)
-        return HttpResponse(json.dumps(serializer.data, ensure_ascii=False),
-                            content_type="application/json; charset=utf-8")
-
-
-# class KcgViewSet(viewsets.ReadOnlyModelViewSet):
-#     """
-#     List all KCG triples.
-#     Provides `list` and `detail` actions.
-#     """
-#     queryset = Triple.objects.all()
-#     serializer_class = TripleSerializer
+    def get_queryset(self):
+        queryset = self.get_queryset_with_query_params(self.queryset, self.request)
+        return queryset

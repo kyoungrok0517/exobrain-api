@@ -5,4 +5,4 @@ class TripleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Triple
-        fields = ('uid', 'sbj', 'rel', 'obj', 'source', 'context')
+        fields = ('uid', 'sbj', 'rel', 'obj', 'confidence', 'source', 'context')

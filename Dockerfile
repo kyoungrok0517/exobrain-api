@@ -2,6 +2,9 @@ FROM python:3.6
 ENV PYTHONUNBUFFERED 1
 
 # Allows docker to cache installed dependencies between builds
+# COPY ./Pipfile Pipfile
+# COPY ./Pipfile.lock Pipfile.lock
+# RUN pip install -U pipenv && pipenv install
 COPY ./requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 

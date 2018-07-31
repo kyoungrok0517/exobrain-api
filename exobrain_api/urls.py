@@ -6,18 +6,18 @@ from django.views.generic.base import RedirectView
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
 from .users.views import UserViewSet, UserCreateViewSet
-# from kcg.views import KcgViewSet
-from kcg.views import triple_list
+from kcg.views import KcgViewSet
+# from kcg.views import triple_list
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'users', UserCreateViewSet)
-# router.register(r'kcg', KcgViewSet)
+router.register(r'kcg', KcgViewSet, base_name='triple')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include(router.urls)),
-    path('api/v1/kcg', triple_list),
+    # path('api/v1/kcg', triple_list),
     path('api-token-auth/', views.obtain_auth_token),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 

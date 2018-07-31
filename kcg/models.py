@@ -7,6 +7,7 @@ class Triple(models.Model):
     sbj = JSONField()
     rel = JSONField()
     obj = JSONField()
+    confidence = models.FloatField(null=True)
     source = JSONField()
     context = models.CharField(max_length=200)
 
@@ -14,4 +15,10 @@ class Triple(models.Model):
         return self.uid
 
     class Meta:
-        ordering = ('uid',)
+        indexes = [
+            models.Index(fields=['sbj']),
+            models.Index(fields=['rel']),
+            models.Index(fields=['obj']),
+            models.Index(fields=['-confidence']),
+        ]
+        ordering = ('-confidence',)

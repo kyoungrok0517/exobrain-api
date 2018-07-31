@@ -37,3 +37,5 @@ boto3==1.7.64
 
 # My
 ujson==1.35
+requests==2.19
+tqdm==4.24
