@@ -8,7 +8,10 @@ Exobrain API. Check out the project's [documentation](http://kyoungrok0517.githu
 # How to Run
 ```bash
 cd exobrain-api
-docker-compose up
+# start API server
+docker-compose up -d
+# download & insert data (it will take some time)
+docker-compose exec web ./manage.py setup
 ```
 
 # API
@@ -49,8 +52,9 @@ Returns json data about triples that match the given criteria.
     **Content**: 주어진 조건에 맞는 triple 이 `rel.confidence`가 높은 순으로 반환됨
     ```json
     {
-      "page": 1,
-      "count": 7,
+    "count": 12,
+    "next": null,
+    "previous": null,
       "triples": [{
         "id": "0002717|00|0001|승용차 |AND| 역사",
         "sbj": {
