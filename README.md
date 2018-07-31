@@ -5,7 +5,13 @@
 
 Exobrain API. Check out the project's [documentation](http://kyoungrok0517.github.io/exobrain-api/).
 
-# How to Run
+## Prerequisites
+
+- [Docker](https://docs.docker.com/docker-for-mac/install/)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [httpie](https://httpie.org) (Optional)
+
+## How to Run
 ```bash
 cd exobrain-api
 # start API server
@@ -14,9 +20,9 @@ docker-compose up -d
 docker-compose exec web ./manage.py setup
 ```
 
-# API
+## API
 
-## Show Triple
+### KCG (Korean CG Triples)
 
 Returns json data about triples that match the given criteria.
 
@@ -52,43 +58,93 @@ Returns json data about triples that match the given criteria.
     **Content**: 주어진 조건에 맞는 triple 이 `rel.confidence`가 높은 순으로 반환됨
     ```json
     {
-    "count": 12,
-    "next": null,
+    "count": 2202002,
+    "next": "http://irel.kaist.ac.kr:8100/api/v1/kcg?limit=2&page=2",
     "previous": null,
-      "triples": [{
-        "id": "0002717|00|0001|승용차 |AND| 역사",
-        "sbj": {
-          "id": "Q001144312",
-          "link": "kowiki/승용차",
-          "name": "승용차",
-          "type": ["AF_TRANSPORT"],
-          "mention": "승용차",
-          "attribute": ""
-        },
-        "rel": {
-          "id": "P279",
-          "name": "subclass of",
-          "confidence": 0.012006174
-        },
-        "obj": {
-          "id": "Q000000309",
-          "link": "kowiki/역사",
-          "name": "역사",
-          "type": ["FD_ART", "CV_POSITION"],
-          "mention": "역사",
-          "attribute": ""
-        },
-        "source": {
-          "sent": "현재 현대자동차의 승용차 중에서 가장 긴 역사를 가지고 있다.",
-          "sect": "__TOP_SECTION__",
-          "doc": {
-            "id": "Q000482458",
-            "link": "kowiki/현대 쏘나타",
-            "name": "현대 쏘나타"
-          }
-        },
-        "context": "kowiki/현대 쏘나타 /// __TOP_SECTION__"
-      }, ...]
+    "results": [
+            {
+                "confidence": 0.06517528,
+                "context": "kowiki/아이패드 (1세대) /// 발매",
+                "obj": {
+                    "attribute": "",
+                    "id": "Q000000038",
+                    "link": "kowiki/이탈리아",
+                    "mention": "이탈리아",
+                    "name": "이탈리아",
+                    "type": [
+                        "LCP_COUNTRY",
+                        "PS_NAME"
+                    ]
+                },
+                "rel": {
+                    "confidence": 0.06517528,
+                    "id": "P530",
+                    "name": "diplomatic relation"
+                },
+                "sbj": {
+                    "attribute": "",
+                    "id": "Q000000016",
+                    "link": "kowiki/캐나다",
+                    "mention": "캐나다",
+                    "name": "캐나다",
+                    "type": [
+                        "LCP_COUNTRY",
+                        "PS_NAME"
+                    ]
+                },
+                "source": {
+                    "doc": {
+                        "id": "Q000059802",
+                        "link": "kowiki/아이패드 (1세대)",
+                        "name": "아이패드 (1세대)"
+                    },
+                    "sect": "발매",
+                    "sent": "4월 말에는 영국과 일본, 호주, 캐나다, 프랑스, 독일, 이탈리아, 스페인, 스위스 등에서 판매가 될 예정이며, 대한민국의 출시 일정은 아직 잡히지 않았다."
+                },
+                "uid": "1004867|02|0002|캐나다 |AND| 이탈리아"
+            },
+            {
+                "confidence": 0.06517528,
+                "context": "kowiki/아이패드 (1세대) /// 발매",
+                "obj": {
+                    "attribute": "",
+                    "id": "Q000000038",
+                    "link": "kowiki/이탈리아",
+                    "mention": "이탈리아",
+                    "name": "이탈리아",
+                    "type": [
+                        "LCP_COUNTRY",
+                        "PS_NAME"
+                    ]
+                },
+                "rel": {
+                    "confidence": 0.06517528,
+                    "id": "P530",
+                    "name": "diplomatic relation"
+                },
+                "sbj": {
+                    "attribute": "",
+                    "id": "Q000000016",
+                    "link": "kowiki/캐나다",
+                    "mention": "캐나다",
+                    "name": "캐나다",
+                    "type": [
+                        "LCP_COUNTRY",
+                        "PS_NAME"
+                    ]
+                },
+                "source": {
+                    "doc": {
+                        "id": "Q000059802",
+                        "link": "kowiki/아이패드 (1세대)",
+                        "name": "아이패드 (1세대)"
+                    },
+                    "sect": "발매",
+                    "sent": "4월 말에는 영국과 일본, 호주, 캐나다, 프랑스, 독일, 이탈리아, 스페인, 스위스 등에서 판매가 될 예정이며, 대한민국의 출시 일정은 아직 잡히지 않았다."
+                },
+                "uid": "1004867|02|0002|캐나다 |AND| 이탈리아"
+            }
+        ]
     }
     ```
 
@@ -102,24 +158,5 @@ Returns json data about triples that match the given criteria.
 
 * **Sample Call**
   ```sh
-  curl 'http://localhost:8100/api/v1/kcg' 
+  curl 'http://localhost:8100/api/v1/kcg?sbj=자동차' 
   ```
-
-# Prerequisites
-
-- [Docker](https://docs.docker.com/docker-for-mac/install/)
-- [Docker Compose](https://docs.docker.com/compose/)
-
-# Local Development
-
-Start the dev server for local development:
-
-```bash
-docker-compose up
-```
-
-Run a command inside the docker container:
-
-```bash
-docker-compose run --rm web [command]
-```
