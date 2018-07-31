@@ -9,7 +9,7 @@ from .users.views import UserViewSet, UserCreateViewSet
 from kcg.views import KcgViewSet
 # from kcg.views import triple_list
 
-router = DefaultRouter()
+router = DefaultRouter(trailing_slash=False)
 router.register(r'users', UserViewSet)
 router.register(r'users', UserCreateViewSet)
 router.register(r'kcg', KcgViewSet, base_name='triple')
