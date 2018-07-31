@@ -8,7 +8,7 @@ Exobrain API. Check out the project's [documentation](http://kyoungrok0517.githu
 # How to Run
 ```bash
 cd exobrain-api
-# start server
+# start API server
 docker-compose up -d
 # download & insert data (it will take some time)
 docker-compose exec web ./manage.py setup
