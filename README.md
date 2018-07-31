@@ -23,13 +23,13 @@ Returns json data about triples that match the given criteria.
 
   **Criteria:**
 
-  `subj`, `rel`, `obj` : plain Korean text (e.g. "자동차")
+  `sbj`, `rel`, `obj` : plain Korean text (e.g. "자동차")
 
-  `sub_id`, `rel_id`, `obj_id` : Wikipedia ID (e.g. Q001144312, P279)
+  `sbj_id`, `rel_id`, `obj_id` : Wikipedia ID (e.g. Q001144312, P279)
 
-  - `subj=[str]`
+  - `sbj=[str]`
 
-  - `subj_id=[str]`
+  - `sbj_id=[str]`
 
   - `rel=[str]`
 
