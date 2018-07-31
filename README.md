@@ -28,7 +28,7 @@ Returns json data about triples that match the given criteria.
 
 - **URL**
 
-  `/kcg/api/v1`
+  `/api/v1/kcg`
 
 * **Method**
 
