@@ -23,31 +23,15 @@ Returns json data about triples that match the given criteria.
 
   **Criteria:**
 
-  `sbj`, `rel`, `obj` : plain Korean text (e.g. "자동차")
+  `sbj=[str]`, `rel=[str]`, `obj=[str]` : plain Korean text (e.g. "자동차")
 
-  `sbj_id`, `rel_id`, `obj_id` : Wikipedia ID (e.g. Q001144312, P279)
-
-  - `sbj=[str]`
-
-  - `sbj_id=[str]`
-
-  - `rel=[str]`
-
-  - `rel_id=[str]`
-
-  - `obj=[str]`
-
-  - `obj_id=[str]`
+  `sbj_id=[str]`, `rel_id=[str]`, `obj_id=[str]` : Wikipedia ID (e.g. Q001144312, P279)
 
   **Pagination:**
 
-  `page` : 페이지 번호. 기본값 1.
+  `page=[str]` : 페이지 번호. 기본값 1.
 
-  `limit` : 페이지 당 triple 최대 개수. 기본값 10.
-
-  - `page=[int]`
-
-  - `limit=[int]`
+  `limit=[str]` : 페이지 당 triple 최대 개수. 기본값 10.
 
 * **Data Params**
 
